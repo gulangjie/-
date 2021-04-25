@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+    <!--定义日志文件的存储地址 勿在 LogBack 的配置中使用相对路径-->
+    <property name="LOG_HOME" value="log/game/game-user"/>
+
+    <!-- 控制台输出 -->
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{50} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- 按照每天生成日志文件 -->
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <FileNamePattern>log/game/game-user/log.%d{yyyy-MM-dd}.log</FileNamePattern>
+            <MaxHistory>30</MaxHistory>
+        </rollingPolicy>
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{50} - %msg%n</pattern>
+        </encoder>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <maxFileSize>10MB</maxFileSize>
+        </triggeringPolicy>
+    </appender>
+    <!--<appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">-->
+        <!--<rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">-->
+            <!--&lt;!&ndash; rollover daily &ndash;&gt;-->
+            <!--<fileNamePattern>log/game/game-user/log.%d{yyyy-MM-dd}.log</fileNamePattern>-->
+            <!--&lt;!&ndash; each file should be at most 100MB, keep 60 days worth of history, but at most 20GB &ndash;&gt;-->
+            <!--<maxFileSize>10MB</maxFileSize>-->
+            <!--<maxHistory>30</maxHistory>-->
+            <!--<totalSizeCap>2GB</totalSizeCap>-->
+        <!--</rollingPolicy>-->
+        <!--<encoder>-->
+            <!--<pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{50} - %msg%n</pattern>-->
+        <!--</encoder>-->
+    <!--</appender>-->
+
+    <logger name="com.zhidu" level="error">
+        <appender-ref ref="STDOUT" level="error"/>
+    </logger>
+
+    <!-- 日志输出级别 -->
+    <root level="ERROR">
+        <!--<appender-ref ref="STDOUT" level="info"/>-->
+        <appender-ref ref="FILE" level="error"/>
+        <!--<appender-ref ref="DB" level="error"/>-->
+    </root>
+
+</configuration>
