@@ -9,7 +9,9 @@ import store from './store';
 import VueI18n from 'vue-i18n';
 import '@/locale';
 // import Local from './locale/index';
+import Element from 'element-ui';
 
+Vue.use(Element, { size: 'small', zIndex: 3000 });
 Vue.use(VueI18n);
 Vue.use(iView);
 
