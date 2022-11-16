@@ -36,7 +36,7 @@
         <freemarker.version>2.3.23</freemarker.version>
         <commons-fileupload.version>1.3.1</commons-fileupload.version>
         <httpclient.version>4.5</httpclient.version>
-        <jackson.version>2.7.4</jackson.version>
+        <jackson.version>2.12.7.1</jackson.version>
         <commons-io.version>2.4</commons-io.version>
         <spring-test.version>2.5</spring-test.version>
         <common-log-version>1.05</common-log-version>
